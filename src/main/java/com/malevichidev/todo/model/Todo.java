@@ -1,6 +1,7 @@
 package com.malevichidev.todo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "todos")
@@ -9,7 +10,9 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
     private boolean realized;
     private int priority;
@@ -17,8 +20,7 @@ public class Todo {
     public Todo() {
     }
 
-    public Todo(Long id, String name, String description, boolean realized, int priority) {
-        this.id = id;
+    public Todo(String name, String description, boolean realized, int priority) {
         this.name = name;
         this.description = description;
         this.realized = realized;
@@ -49,10 +51,10 @@ public class Todo {
     public void setRealized(boolean realized) {
         this.realized = realized;
     }
-    public int getPrioridade() {
+    public int getPriority() {
         return priority;
     }
-    public void setPrioridade(int priority) {
+    public void setPriority(int priority) {
         this.priority = priority;
     }
 
